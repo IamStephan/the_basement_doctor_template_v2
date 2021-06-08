@@ -2,21 +2,19 @@
   "name": "the_basement_doctor_template",
   "version": "1.0.0",
   "description": "Template for the basement doctor website",
-  "main": "index.js",
   "author": "Stephan Burger",
   "license": "MIT",
   "scripts": {
-    "postcss:watch": "postcss src/styles/global/index.pcss -o src/styles/global/index.css --env development -w",
-    "postcss:build": "postcss src/styles/global/index.pcss -o src/styles/global/index.css --env production",
-    "parcel:serve": "parcel serve src/pages/*.html",
-    "parcel:watch": "parcel watch src/pages/*.html",
-    "parcel:build": "parcel build src/pages/*.html",
+    "parcel:serve": "parcel serve src/html/pages/*.html",
+    "parcel:watch": "parcel watch src/html/pages/*.html",
+    "parcel:build": "parcel build src/html/pages/*.html",
     "clean": "rm -rf dist .parcel-cache",
-    "build": "npm-run-all -s clean postcss:build parcel:build",
-    "start": "npm-run-all -s clean -p postcss:watch parcel:serve"
+    "build": "npm-run-all -s clean parcel:build",
+    "start": "npm-run-all -s clean -p parcel:serve"
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^4.0.3",
+    "@parcel/transformer-sass": "2.0.0-beta.2",
     "@tailwindcss/aspect-ratio": "^0.2.1",
     "@tailwindcss/typography": "^0.4.1",
     "autoprefixer": "^10.2.6",
