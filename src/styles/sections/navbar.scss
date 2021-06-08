@@ -34,7 +34,7 @@
     background-color: #edece2;
 
     .open-text {
-      @apply text-primary;
+      @apply text-primary sm:text-black;
     }
 
     .separator {
