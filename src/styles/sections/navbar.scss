@@ -79,7 +79,8 @@
   }
 
   .links-container {
-    @apply col-start-3 col-end-4 row-start-2 row-end-3 py-8 flex flex-col
+    @apply col-start-3 col-end-4 row-start-2 row-end-3 py-8 pb-4 flex flex-col
+      lg:pt-12
       md:py-0 md:justify-center md:row-start-1 md:row-end-2;
 
     .cta-number-container {
