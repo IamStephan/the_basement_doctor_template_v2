@@ -1,0 +1,96 @@
+@import "../utils/breakpoints.vars.scss";
+@import "../utils/calculate_fraction_width.func.scss";
+
+.features-container {
+  @apply grid;
+  grid-template-columns:
+    minmax(theme("spacing.8"), auto) minmax(
+      calculateFractionWidth(0.45, $screen-lg),
+      calculateFractionWidth(0.45, $screen-2xl)
+    )
+    minmax(
+      calculateFractionWidth(0.55, $screen-lg),
+      calculateFractionWidth(0.55, $screen-2xl)
+    )
+    minmax(theme("spacing.8"), auto);
+
+  @screen xl {
+    grid-template-columns:
+      minmax(theme("spacing.8"), auto)
+      1fr
+      minmax(theme("spacing.8"), auto);
+    grid-template-rows: auto auto auto;
+  }
+
+  .features-info-container {
+    @apply col-start-2 col-end-3 mr-24 my-44
+      2xl:mr-0
+      xl:max-w-3xl xl:mx-auto xl:mt-2 xl:mb-16
+      md:mb-0;
+
+    .features-info-title {
+      @apply text-secondary font-black text-5xl mb-6
+        xl:text-center
+        md:text-3xl md:mb-3;
+    }
+
+    .features-info-body {
+      @apply text-black text-2xl mb-8
+        xl:text-center
+        md:text-base;
+    }
+
+    .features-info-cta {
+      @apply flex
+        xl:justify-center
+        md:hidden;
+    }
+  }
+
+  .features-blocks-container {
+    @apply grid grid-cols-2 grid-rows-2 gap-2
+      xl:col-start-2 xl:col-end-3 xl:row-start-2
+      md:gap-4 md:grid-cols-1 md:mx-8;
+
+    @screen xl {
+      $row-width: 300;
+      grid-template-rows: #{$row-width}px #{$row-width}px;
+    }
+
+    @screen md {
+      grid-template-rows: auto auto;
+    }
+
+    .feature-block {
+      @apply relative flex flex-col justify-center bg-gray-50 px-16 py-8
+        lg:px-12
+        md:px-8
+        sm:px-7;
+
+      .feature-block-icon-container {
+        @apply flex
+          md:justify-center;
+
+        .feature-block-icon {
+          @apply h-20 w-20 mb-6
+            md:h-12 md:w-12 md:mb-3;
+        }
+      }
+
+      .feature-block-title {
+        @apply text-black text-xl font-bold mb-2
+          md:text-center md:text-base md:mb-1;
+      }
+
+      .feature-block-subtitle {
+        @apply text-black text-lg
+          md:text-center md:text-sm;
+      }
+    }
+  }
+
+  .cta-container {
+    @apply hidden justify-center items-center row-start-3 col-start-2 mt-8
+      md:flex;
+  }
+}
