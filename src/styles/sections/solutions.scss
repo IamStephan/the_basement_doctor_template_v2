@@ -1,0 +1,92 @@
+@import "../utils/breakpoints.vars.scss";
+@import "../utils/calculate_fraction_width.func.scss";
+
+.solutions-container {
+  @apply grid;
+  grid-template-columns:
+    minmax(theme("spacing.8"), auto) minmax(
+      calculateFractionWidth(0.45, $screen-lg),
+      calculateFractionWidth(0.45, $screen-2xl)
+    )
+    minmax(
+      calculateFractionWidth(0.55, $screen-lg),
+      calculateFractionWidth(0.55, $screen-2xl)
+    )
+    minmax(theme("spacing.8"), auto);
+
+  @screen xl {
+    grid-template-columns:
+      minmax(theme("spacing.8"), auto)
+      1fr
+      minmax(theme("spacing.8"), auto);
+    grid-template-rows: auto;
+  }
+
+  .solutions-info-container {
+    @apply col-start-2 col-end-3 mr-24 my-44
+      2xl:mr-12
+      xl:max-w-3xl xl:mx-auto xl:mt-2 xl:mb-16
+      md:mb-0;
+
+    .solutions-info-title {
+      @apply text-secondary font-black text-5xl mb-6
+        xl:text-center
+        md:text-3xl md:mb-3;
+    }
+
+    .solutions-info-body {
+      @apply text-black text-2xl mb-8
+        xl:text-center
+        md:text-base;
+    }
+
+    .solutions-info-cta {
+      @apply flex
+        xl:justify-center
+        md:hidden;
+    }
+  }
+
+  .solutions-blocks-container {
+    @apply grid grid-cols-2 grid-rows-2 gap-8
+      xl:col-start-2 xl:col-end-3 xl:row-start-2
+      md:gap-4;
+
+    @screen xl {
+      $row-width: 300;
+      grid-template-rows: #{$row-width}px #{$row-width}px;
+    }
+
+    @screen md {
+      grid-template-rows: auto auto;
+    }
+
+    .solution-block {
+      @apply relative
+        md:aspect-w-16 md:aspect-h-9;
+
+      .solution-block-title-container {
+        @apply bg-secondary px-4 py-3
+          md:bg-transparent md:flex  md:items-center md:justify-center;
+
+        .solution-block-title {
+          @apply text-white text-xl font-bold text-center
+            sm:text-xs;
+        }
+      }
+
+      .solution-block-bg-container {
+        .solution-block-bg {
+          @apply absolute top-0 left-0 w-full h-full object-cover;
+          z-index: -1;
+        }
+      }
+
+      .solutions-block-overlay {
+        @apply hidden absolute top-0 left-0 w-full h-full bg-secondary opacity-50
+          md:block;
+        z-index: -1;
+      }
+    }
+  }
+}
