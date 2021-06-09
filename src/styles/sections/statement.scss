@@ -1,0 +1,69 @@
+@import "../utils/breakpoints.vars.scss";
+@import "../utils/calculate_fraction_width.func.scss";
+
+.statment-container {
+  @apply grid;
+  overflow-x: hidden;
+  overflow-y: visible;
+  grid-template-columns:
+    minmax(theme("spacing.8"), auto)
+    minmax(
+      calculateFractionWidth(0.45, $screen-md),
+      calculateFractionWidth(0.45, $screen-2xl)
+    )
+    minmax(
+      calculateFractionWidth(0.55, $screen-md),
+      calculateFractionWidth(0.55, $screen-2xl)
+    )
+    minmax(theme("spacing.8"), auto);
+
+  @screen lg {
+    grid-template-columns:
+      minmax(theme("spacing.8"), auto)
+      1fr
+      minmax(theme("spacing.8"), auto);
+  }
+
+  .statement-content-container {
+    @apply col-start-3 pb-28
+      lg:pb-16 lg:col-start-2 lg:col-end-3;
+
+    .statement-content-title {
+      @apply text-secondary text-4xl leading-tight font-bold mb-8 relative
+        lg:mr-24
+        md:text-2xl
+        sm:text-lg sm:mb-2;
+
+      .statement-mini-showcase-container {
+        @apply hidden
+            lg:block;
+
+        .statement-mini-showcase {
+          @apply absolute bottom-0 w-auto h-full object-contain right-8 transform translate-x-full
+            sm:right-0;
+        }
+      }
+    }
+
+    .statement-content-body {
+      @apply text-gray-900 text-xl leading-relaxed mb-8
+        md:text-lg 
+        sm:text-sm sm:mb-6;
+    }
+
+    .statment-content-cta-container {
+      @apply flex
+        lg:justify-center
+        sm:pt-6;
+    }
+  }
+
+  .statement-showcase-container {
+    @apply col-start-1 col-end-3 row-start-1 relative mr-24
+      lg:hidden;
+
+    .statement-showcase {
+      @apply absolute top-0 left-0 w-full h-full object-cover object-right-top;
+    }
+  }
+}
