@@ -1,0 +1,53 @@
+.awards-container {
+  @apply relative pt-32 pb-28 overflow-hidden
+    lg:pt-28 lg:pb-24
+    md:pt-24 md:pb-20
+    sm:pt-16 sm:pb-10;
+
+  .awards-bg-container {
+    @apply absolute top-0 left-0 w-full h-full;
+    z-index: -1;
+
+    .awards-bg {
+      @apply absolute top-0 left-0 w-full h-full object-cover;
+    }
+
+    .awards-bg-overlay {
+      @apply absolute top-0 left-0 w-full h-full bg-secondary opacity-90;
+    }
+  }
+
+  .awards-arrow-container {
+    @apply absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2;
+
+    .awards-arrow {
+      @apply w-20 h-20 bg-white transform rotate-45
+        md:w-16 md:h-16
+        sm:w-10 sm:h-10;
+    }
+  }
+
+  .awards-content {
+    @apply mx-auto max-w-7xl text-white leading-loose text-xl mb-20 px-8
+      lg:mb-20
+      md:text-lg md:leading-relaxed md:mb-16
+      sm:text-base sm:mb-12;
+  }
+
+  .awards-images {
+    @apply flex flex-nowrap justify-around mx-8
+    2xl:justify-start;
+
+    .awards-image-container {
+      /*
+        The Right margin cause the items to not be center but since
+        the images aren't uniform, it's not noticable
+      */
+      @apply px-8 py-2 mr-8 last:mr-0 flex-shrink-0 rounded-lg bg-white;
+
+      .awards-image {
+        @apply h-16 w-auto object-contain;
+      }
+    }
+  }
+}
