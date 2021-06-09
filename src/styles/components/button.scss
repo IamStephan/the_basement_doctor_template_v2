@@ -15,5 +15,5 @@
 
 .button-hero {
   @include base-button;
-  @apply px-16 text-xl;
+  @apply px-16 text-xl rounded-none;
 }
