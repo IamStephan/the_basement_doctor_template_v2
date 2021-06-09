@@ -1,0 +1,145 @@
+@import "../utils/breakpoints.vars.scss";
+@import "../utils/calculate_fraction_width.func.scss";
+
+.social-proof {
+  @apply relative grid overflow-hidden;
+  grid-template-columns:
+    minmax(theme("spacing.8"), auto)
+    minmax(
+      calculateFractionWidth(0.5, $screen-md),
+      calculateFractionWidth(0.5, $screen-2xl)
+    )
+    minmax(
+      calculateFractionWidth(0.5, $screen-md),
+      calculateFractionWidth(0.5, $screen-2xl)
+    )
+    minmax(theme("spacing.8"), auto);
+
+  @screen lg {
+    grid-template-columns:
+      minmax(theme("spacing.8"), auto)
+      1fr
+      minmax(theme("spacing.8"), auto);
+  }
+
+  .social-proof-bg-container {
+    .social-proof-bg {
+      @apply object-cover;
+      z-index: -2;
+    }
+
+    .social-proof-bg-overlay {
+      @apply absolute top-0 left-0 w-full h-full;
+
+      z-index: -1;
+      background-color: #edece2;
+      opacity: 0.8;
+    }
+  }
+
+  .social-proof-content {
+    @apply py-32 col-start-3
+      lg:py-16 lg:col-start-2
+      md:py-8;
+
+    .social-proof-content-heading {
+      @apply mb-8 text-6xl text-secondary font-bold
+        lg:text-center lg:text-5xl
+        md:text-3xl md:mb-2
+        sm:text-2xl;
+    }
+
+    .social-proof-content-body {
+      @apply text-3xl mb-8
+        lg:text-center lg:mb-0 lg:text-2xl
+        md:text-lg;
+      color: #231f20;
+    }
+
+    .social-proof-content-cta {
+      @apply lg:hidden;
+    }
+  }
+
+  .testimonials-container {
+    @apply relative col-start-2 row-start-1 mt-28
+      lg:row-start-2 lg:mt-0 lg:mb-8;
+
+    .testimonials {
+      @apply flex pr-16 overflow-x-hidden flex-nowrap flex-col absolute top-0
+        lg:items-center lg:static lg:pr-0;
+
+      .testimonial {
+        @apply flex flex-col items-end flex-shrink-0 mb-12
+            lg:mr-0 lg:mb-10 lg:hidden
+            sm:mb-4;
+        max-width: 600px;
+
+        @screen lg {
+          // Only show the first two items
+          &:nth-child(1),
+          &:nth-child(2) {
+            display: flex;
+          }
+
+          // reset 2nd child layout
+          &:nth-child(2) {
+            margin-bottom: 0;
+          }
+        }
+
+        .testimonial-body {
+          @apply z-10 self-stretch px-12 py-8 bg-white
+              sm:px-6 sm:py-5;
+
+          .testimonial-body-ratings-container {
+            @apply flex mb-6
+                sm:mb-3;
+
+            .testimonial-rating {
+              @apply object-contain w-8 h-8 mr-3
+                  md:mr-1 md:w-6 md:h-6;
+            }
+          }
+
+          .testimonial-body-review {
+            @apply mb-2 text-lg
+                sm:text-sm;
+          }
+
+          .testimonial-body-customer {
+            @apply text-sm
+                sm:text-xs;
+            color: #838383;
+          }
+        }
+
+        // alternate tringles
+        &:nth-child(2) {
+          align-items: flex-start;
+
+          .testimonial-triangle {
+            transform: translate(-25%, -50%) rotate(270deg);
+          }
+        }
+
+        .testimonial-triangle {
+          $size: 26;
+
+          width: 0;
+          height: 0;
+          border-left: #{$size}px solid transparent;
+          border-right: #{$size}px solid transparent;
+
+          border-top: #{$size}px solid #ffffff;
+          transform: translate(25%, -50%) rotate(90deg);
+        }
+      }
+    }
+  }
+
+  .social-proof-cta {
+    @apply hidden row-start-3 col-start-2 justify-center mb-10
+      lg:flex;
+  }
+}

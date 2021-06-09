@@ -1,0 +1,54 @@
+<section class="social-proof space-section">
+  <div class="social-proof-bg-container">
+    <img
+      src="../../assets/images/social_proof/people.jpg"
+      class="social-proof-bg image"
+    />
+    <div class="social-proof-bg-overlay"></div>
+  </div>
+
+  <div class="social-proof-content">
+    <h2 class="social-proof-content-heading">Trusted by Homeowners Like You</h2>
+    <p class="social-proof-content-body">
+      We have hundreds of reviews from satisfied customers.
+    </p>
+    <div class="social-proof-content-cta">
+      <a class="button"> See More Reviews </a>
+    </div>
+  </div>
+
+  <div class="testimonials-container">
+    <div class="testimonials">
+      <!-- 
+        Loop testimonials (PostHTML expresions)
+        =======================================
+        Simply loop over a dummy array since
+        the component repeats itself
+       -->
+      <each loop="_ in [1, 2, 3]">
+        <div class="testimonial">
+          <div class="testimonial-body">
+            <div class="testimonial-body-ratings-container">
+              <each loop="_ in [1,2,3,4,5]">
+                <icon
+                  class="testimonial-rating"
+                  src="src/assets/svgs/star.svg"
+                />
+              </each>
+            </div>
+            <p class="testimonial-body-review">
+              Customer review content goes here. Customer review content goes
+              here.
+            </p>
+            <p class="testimonial-body-customer">Customer A.</p>
+          </div>
+          <div class="testimonial-triangle"></div>
+        </div>
+      </each>
+    </div>
+  </div>
+
+  <div class="social-proof-cta">
+    <a class="button">See More Reviews</a>
+  </div>
+</section>
