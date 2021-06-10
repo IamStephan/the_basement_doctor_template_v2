@@ -1,0 +1,86 @@
+@import "../utils/breakpoints.vars.scss";
+@import "../utils/calculate_fraction_width.func.scss";
+
+.hero-container {
+  @apply grid;
+  grid-template-columns:
+    minmax(theme("spacing.8"), auto)
+    minmax(
+      calculateFractionWidth(0.45, $screen-md),
+      calculateFractionWidth(0.45, $screen-2xl)
+    )
+    minmax(
+      calculateFractionWidth(0.55, $screen-md),
+      calculateFractionWidth(0.55, $screen-2xl)
+    )
+    minmax(theme("spacing.8"), auto);
+
+  @screen lg {
+    grid-template-columns:
+      minmax(theme("spacing.8"), auto)
+      1fr
+      minmax(theme("spacing.8"), auto);
+  }
+
+  .hero-bg-container {
+    @apply col-start-1 col-end-5 row-start-1 relative;
+    z-index: -1;
+
+    .hero-bg-desktop {
+      @apply absolute top-0 left-0 w-full h-full object-cover object-top lg:hidden;
+    }
+
+    .hero-bg-mobile {
+      @apply hidden absolute top-0 left-0 w-full h-full object-cover object-top lg:block;
+    }
+
+    .hero-bg-mobile-overlay {
+      @apply hidden absolute top-0 left-0 w-full h-full bg-secondary opacity-60 lg:block;
+    }
+  }
+
+  .hero-headline-container {
+    @apply col-start-3 col-end-4 row-start-1 pb-28 pt-12
+      lg:col-start-2 lg:col-end-3
+      md:pb-6;
+
+    .hero-headline-label {
+      @apply text-white text-6xl mb-12 origin-center
+        2xl:text-5xl
+        md:text-3xl md:mb-6;
+
+      font-family: "Yellowtail";
+      transform: translateX(-15%) rotateZ(-5deg);
+
+      @screen lg {
+        transform: translateX(0%) rotateZ(-5deg);
+      }
+    }
+
+    .hero-headline-header {
+      @apply text-white text-6xl font-bold text-center mb-6
+        2xl:text-5xl
+        md:text-3xl md:mb-4;
+    }
+
+    .hero-headline-slogan {
+      @apply text-white max-w-xl mx-auto text-xl text-center mb-10
+        md:mb-6
+        sm:text-base;
+    }
+
+    .hero-headline-cta-container {
+      @apply flex justify-center
+        md:hidden;
+    }
+  }
+
+  .hero-headline-cta-mobile-container {
+    @apply hidden col-start-1 col-end-4
+      md:flex;
+
+    .button-hero {
+      @apply block flex-1;
+    }
+  }
+}
