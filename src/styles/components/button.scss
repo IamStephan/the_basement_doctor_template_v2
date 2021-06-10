@@ -7,7 +7,7 @@
 */
 
 @mixin base-button {
-  @apply inline-block px-6 py-3 font-semibold text-white no-underline rounded-md cursor-pointer bg-primary hover:opacity-90;
+  @apply inline-block px-6 py-3 font-semibold text-white no-underline rounded-md cursor-pointer bg-primary hover:opacity-90 text-center;
 }
 .button.button.button {
   @include base-button;
@@ -15,5 +15,6 @@
 
 .button-hero {
   @include base-button;
-  @apply px-16 text-xl rounded-none;
+  @apply px-24 py-4 text-2xl rounded-none font-bold
+    sm:px-8 sm:text-lg;
 }
