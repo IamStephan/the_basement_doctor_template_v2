@@ -51,7 +51,7 @@
 
   .bottom-footer {
     @apply text-white flex justify-center py-4 bg-secondary
-      lg:flex-wrap
+      lg:flex-wrap lg:px-8
       md:flex-col;
 
     .text-span {
